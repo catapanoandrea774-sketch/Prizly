@@ -5,243 +5,351 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PRICELY — Shop Smarter</title>
+
 <style>
 :root {
-  --navy: #14243d;
-  --green: #24bd88;
-  --bg: #f5f7fa;
-  --muted: #778397;
+  --navy:#14243d;
+  --green:#24bd88;
+  --bg:#f5f7fa;
+  --muted:#778397;
 }
-* { box-sizing: border-box; }
+* {box-sizing:border-box}
 body {
-  margin: 0;
-  font-family: Inter, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--navy);
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--navy);
 }
 header {
-  background: white;
-  padding: 18px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #e9edf2;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  background:white;
+  padding:18px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #e9edf2;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
-.logo {
-  font-size: 25px;
-  font-weight: 900;
-  letter-spacing: -1px;
-}
-.logo span { color: var(--green); }
-nav { display: flex; gap: 24px; }
+.logo {font-size:25px;font-weight:900;letter-spacing:-1px}
+.logo span {color:var(--green)}
+nav {display:flex;gap:20px;align-items:center;flex-wrap:wrap}
 nav a {
-  color: var(--navy);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
+  color:var(--navy);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
 }
-nav a:hover { color: var(--green); }
+nav a:hover {color:var(--green)}
+button {border:0;cursor:pointer;font-weight:700}
 .hero {
-  padding: 65px 20px 45px;
-  text-align: center;
-  background: linear-gradient(135deg,#14243d,#203b5c);
-  color: white;
+  padding:65px 20px 45px;
+  text-align:center;
+  background:linear-gradient(135deg,#14243d,#203b5c);
+  color:white;
 }
 .hero h1 {
-  font-size: clamp(32px,5vw,52px);
-  margin: 0 0 12px;
-  letter-spacing: -2px;
+  font-size:clamp(32px,5vw,52px);
+  margin:0 0 12px;
+  letter-spacing:-2px;
 }
-.hero h1 span { color: #4be0ad; }
-.hero p {
-  color: #cbd5e1;
-  margin-bottom: 27px;
-}
+.hero h1 span {color:#4be0ad}
+.hero p {color:#cbd5e1;margin-bottom:27px}
 .search {
-  display: flex;
-  max-width: 590px;
-  margin: auto;
-  padding: 6px;
-  background: white;
-  border-radius: 12px;
-  gap: 6px;
+  display:flex;
+  max-width:590px;
+  margin:auto;
+  padding:6px;
+  background:white;
+  border-radius:12px;
+  gap:6px;
 }
 .search input {
-  flex: 1;
-  min-width: 0;
-  border: none;
-  outline: none;
-  padding: 13px;
-  font-size: 15px;
-  color: var(--navy);
+  flex:1;
+  min-width:0;
+  border:0;
+  outline:none;
+  padding:13px;
+  font-size:15px;
 }
-button {
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
+.search button,.primary {
+  background:var(--green);
+  color:white;
+  padding:13px 22px;
+  border-radius:8px;
 }
-.search button {
-  background: var(--green);
-  color: white;
-  padding: 13px 23px;
-  border-radius: 8px;
-}
-main {
-  max-width: 1150px;
-  margin: auto;
-  padding: 35px 20px 60px;
-}
+main {max-width:1150px;margin:auto;padding:35px 20px 60px}
 .section-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:32px 0 20px;
 }
-.section-heading h2 { font-size: 23px; margin: 0; }
-#count { color: var(--muted); font-size: 13px; }
+.section-heading h2 {font-size:23px;margin:0}
+#count {color:var(--muted);font-size:13px}
 .categories {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
 }
 .category {
-  background: white;
-  border: 1px solid #e4e9ef;
-  color: var(--navy);
-  border-radius: 30px;
-  padding: 10px 18px;
+  background:white;
+  border:1px solid #e4e9ef;
+  color:var(--navy);
+  border-radius:30px;
+  padding:10px 18px;
 }
-.category.active {
-  background: var(--navy);
-  color: white;
-  border-color: var(--navy);
-}
+.category.active {background:var(--navy);color:white}
 .products {
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 20px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
 }
 .card {
-  background: white;
-  border: 1px solid #e9edf2;
-  border-radius: 15px;
-  overflow: hidden;
-  transition: .2s;
+  background:white;
+  border:1px solid #e9edf2;
+  border-radius:15px;
+  overflow:hidden;
+  transition:.2s;
 }
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px #172d4510;
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px #172d4510;
 }
 .product-image {
-  height: 190px;
-  background: #f1f4f7;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height:190px;
+  background:#f1f4f7;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 .product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 15px;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:15px;
 }
 .heart {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  background: white;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 19px;
-  color: #8792a2;
+  position:absolute;
+  right:12px;
+  top:12px;
+  background:white;
+  border-radius:50%;
+  width:36px;
+  height:36px;
+  font-size:19px;
+  color:#8792a2;
 }
-.heart.saved { color: #ec5572; }
-.card-body { padding: 17px; }
+.heart.saved {color:#ec5572}
+.card-body {padding:17px}
 .tag {
-  color: #169c70;
-  background: #e9f9f2;
-  font-size: 10px;
-  padding: 5px 9px;
-  border-radius: 20px;
-  font-weight: 800;
+  color:#169c70;
+  background:#e9f9f2;
+  font-size:10px;
+  padding:5px 9px;
+  border-radius:20px;
+  font-weight:800;
 }
-.card h3 { font-size: 17px; margin: 12px 0 5px; }
-.description { font-size: 12px; color: var(--muted); }
+.card h3 {font-size:17px;margin:12px 0 5px}
+.description {font-size:12px;color:var(--muted)}
 .price-title {
-  margin-top: 20px;
-  font-size: 12px;
-  color: var(--muted);
+  margin-top:20px;
+  font-size:12px;
+  color:var(--muted);
 }
 .price-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 9px 0;
-  border-bottom: 1px solid #f0f2f5;
-  font-size: 13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  padding:10px 0;
+  border-bottom:1px solid #f0f2f5;
+  font-size:13px;
 }
-.price-row.best { color: #159b70; font-weight: 800; }
-.price-row a {
-  color: inherit;
-  text-decoration: none;
-}
-.price-row a:hover { text-decoration: underline; }
+.price-row.best {color:#159b70;font-weight:800}
+.price-row a {color:inherit;text-decoration:none}
+.price-row a:hover {text-decoration:underline}
 .cheapest {
-  background: #e9f9f2;
-  color: #159b70;
-  padding: 10px;
-  border-radius: 8px;
-  margin-top: 13px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  font-weight: 800;
+  background:#e9f9f2;
+  color:#159b70;
+  padding:10px;
+  border-radius:8px;
+  margin-top:13px;
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  font-weight:800;
+}
+.small-btn {
+  background:#edf5f2;
+  color:#168b67;
+  padding:10px 12px;
+  border-radius:8px;
+  margin-top:12px;
+  width:100%;
 }
 .empty {
-  grid-column: 1/-1;
-  padding: 50px 20px;
-  text-align: center;
-  color: var(--muted);
+  grid-column:1/-1;
+  padding:50px 20px;
+  text-align:center;
+  color:var(--muted);
 }
 .info {
-  margin-top: 55px;
-  background: white;
-  border-radius: 16px;
-  padding: 35px;
-  text-align: center;
+  margin-top:55px;
+  background:white;
+  border-radius:16px;
+  padding:35px;
+  text-align:center;
 }
-.info h2 { margin-top: 0; }
-.info p { color: var(--muted); line-height: 1.7; }
+.info p {color:var(--muted);line-height:1.7}
 footer {
-  background: var(--navy);
-  color: white;
-  padding: 30px 20px;
-  text-align: center;
-  font-size: 13px;
+  background:var(--navy);
+  color:white;
+  padding:30px 20px;
+  text-align:center;
+  font-size:13px;
 }
-footer p { color: #bac5d4; }
+footer p {color:#bac5d4}
+
+/* NEW: feature sections */
+.feature-panel {
+  background:white;
+  padding:22px;
+  border-radius:15px;
+  border:1px solid #e9edf2;
+  margin-top:20px;
+}
+.feature-panel h3 {margin-top:0}
+.deal-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+.deal {
+  background:#f1faf6;
+  padding:16px;
+  border-radius:12px;
+}
+.deal strong {display:block;margin-bottom:7px}
+.deal p {font-size:12px;color:var(--muted)}
+.deal button {color:#168b67;background:transparent;padding:0}
+.alert-item,.saved-item {
+  padding:12px 0;
+  border-bottom:1px solid #edf0f4;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+input,select {
+  font:inherit;
+}
+.target-input {
+  width:100%;
+  padding:12px;
+  border:1px solid #dce3eb;
+  border-radius:8px;
+  margin:10px 0;
+}
+.action-row {display:flex;gap:10px;flex-wrap:wrap}
+.action-row button {
+  padding:10px 15px;
+  border-radius:8px;
+}
+.secondary {background:#edf1f5;color:var(--navy)}
+.danger {background:#fff0f0;color:#c94a4a}
+.chart {
+  height:150px;
+  display:flex;
+  align-items:flex-end;
+  gap:12px;
+  padding:15px 5px 0;
+  border-bottom:1px solid #e5eaf0;
+}
+.chart-column {
+  flex:1;
+  text-align:center;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  gap:6px;
+  font-size:10px;
+  color:var(--muted);
+}
+.chart-bar {
+  background:linear-gradient(180deg,#4be0ad,#24bd88);
+  border-radius:5px 5px 0 0;
+  min-height:5px;
+}
+.modal {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#101d2dcc;
+  z-index:30;
+  justify-content:center;
+  align-items:center;
+  padding:18px;
+}
+.modal.open {display:flex}
+.modal-content {
+  background:white;
+  width:100%;
+  max-width:520px;
+  max-height:85vh;
+  overflow:auto;
+  border-radius:16px;
+  padding:24px;
+}
+.modal-close {
+  float:right;
+  background:#edf1f5;
+  padding:8px 12px;
+  border-radius:8px;
+}
+.status {
+  color:#168b67;
+  background:#e9f9f2;
+  padding:8px;
+  border-radius:8px;
+  font-size:12px;
+}
+.profile-card {
+  text-align:center;
+  padding:15px;
+}
+.avatar {
+  width:65px;
+  height:65px;
+  background:#e9f9f2;
+  color:#159b70;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:28px;
+  margin:auto auto 12px;
+}
 @media(max-width:850px) {
-  .products { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .products {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .deal-grid {grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:560px) {
-  header { padding: 15px 5%; }
-  nav { gap: 12px; }
-  nav a { font-size: 12px; }
-  .hero { padding: 50px 16px 35px; }
-  .products { grid-template-columns: 1fr; }
-  .product-image { height: 210px; }
-  main { padding: 25px 14px 45px; }
-  .info { padding: 25px 18px; }
+  header {padding:15px 5%;align-items:flex-start}
+  nav {gap:10px;max-width:70%;justify-content:flex-end}
+  nav a {font-size:11px}
+  .hero {padding:50px 16px 35px}
+  .products,.deal-grid {grid-template-columns:1fr}
+  .product-image {height:210px}
+  main {padding:25px 14px 45px}
+  .info {padding:25px 18px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -249,7 +357,9 @@ footer p { color: #bac5d4; }
   <nav>
     <a href="#home">Home</a>
     <a href="#products">Products</a>
-    <a href="#favorites" id="favoritesLink">♥ Saved</a>
+    <a href="#deals">Deals</a>
+    <a href="#wishlist">♥ Saved</a>
+    <a href="#profile">Profile</a>
   </nav>
 </header>
 
@@ -257,12 +367,14 @@ footer p { color: #bac5d4; }
   <h1>Shop smarter. <span>Pay less.</span></h1>
   <p>Find products. Compare prices. Discover better deals.</p>
   <div class="search">
-    <input id="searchInput" placeholder="Search products, brands..." />
+    <input id="searchInput" placeholder="Search products, brands...">
     <button id="searchButton">Search</button>
   </div>
 </section>
 
-<main id="products">
+<main>
+
+<section id="products">
   <div class="section-heading">
     <h2 id="heading">Discover products</h2>
     <span id="count"></span>
@@ -277,170 +389,243 @@ footer p { color: #bac5d4; }
   </div>
 
   <div class="products" id="productGrid"></div>
+</section>
 
-  <section class="info">
-    <h2>Why shop with PRICELY?</h2>
-    <p>We help you compare example prices from different retailers so you can make smarter shopping decisions.</p>
-    <strong>One product. Multiple prices. Smarter choices.</strong>
-  </section>
+<!-- TRENDING DEALS -->
+<section id="deals">
+  <div class="section-heading">
+    <h2>🔥 Trending deals</h2>
+    <span class="status">Sample deals</span>
+  </div>
+  <div class="deal-grid" id="dealGrid"></div>
+</section>
+
+<!-- WISHLIST -->
+<section id="wishlist" class="feature-panel">
+  <div class="section-heading">
+    <h2>♥ Your wishlist</h2>
+  </div>
+  <div id="wishlistContent">Save products using the heart buttons.</div>
+</section>
+
+<!-- PRICE ALERTS -->
+<section id="alerts" class="feature-panel">
+  <h3>🔔 Price alerts</h3>
+  <p class="description">Choose a target price for a product. PRICELY will show when the sample price reaches your target.</p>
+  <select id="alertProduct" class="target-input"></select>
+  <input id="targetPrice" class="target-input" type="number" min="0" step="0.01" placeholder="Your target price (€)">
+  <button class="primary" id="addAlert">Create price alert</button>
+  <div id="alertList" style="margin-top:18px"></div>
+</section>
+
+<!-- PROFILE -->
+<section id="profile" class="feature-panel">
+  <h3>👤 Your PRICELY profile</h3>
+  <div class="profile-card">
+    <div class="avatar">P</div>
+    <strong id="profileName">Guest shopper</strong>
+    <p class="description">Your shopping dashboard</p>
+    <input id="nameInput" class="target-input" placeholder="Enter your display name">
+    <button class="primary" id="saveProfile">Save profile</button>
+    <p id="profileMessage" class="description"></p>
+  </div>
+</section>
+
+<section class="info">
+  <h2>Why shop with PRICELY?</h2>
+  <p>Compare example prices, discover deals and keep track of products you love.</p>
+  <strong>One product. Multiple prices. Smarter choices.</strong>
+</section>
+
 </main>
 
 <footer>
   <div class="logo">PRICELY<span>.</span></div>
   <p>Compare smarter. Save more.</p>
   <p>© 2026 PRICELY. Demo version.</p>
-  <p>Prices displayed are sample data, not live retailer offers.</p>
+  <p>Prices and price history are illustrative sample data, not live retailer offers.</p>
 </footer>
+
+<!-- PRODUCT DETAILS MODAL -->
+<div class="modal" id="productModal">
+  <div class="modal-content" id="modalContent"></div>
+</div>
 
 <script>
 const products = [
   {
-    id:1, name:"Nike Air Force 1",
+    id:1,
+    name:"Nike Air Force 1",
     category:"Fashion",
     description:"Classic white sneakers",
     image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600",
     prices:[
-      {shop:"Example Store A",price:120},
-      {shop:"Example Store B",price:99},
-      {shop:"Example Store C",price:85}
-    ]
+      {shop:"Nike Store",price:120,url:"https://www.nike.com/"},
+      {shop:"JD Sports",price:99,url:"https://www.jdsports.com/"},
+      {shop:"Foot Locker",price:85,url:"https://www.footlocker.com/"}
+    ],
+    history:[120,115,110,105,95,85]
   },
   {
-    id:2, name:"Apple iPhone",
+    id:2,
+    name:"Apple iPhone",
     category:"Electronics",
     description:"Premium smartphone",
     image:"https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600",
     prices:[
-      {shop:"Example Store A",price:999},
-      {shop:"Example Store B",price:949},
-      {shop:"Example Store C",price:919}
-    ]
+      {shop:"Apple",price:999,url:"https://www.apple.com/"},
+      {shop:"Amazon",price:949,url:"https://www.amazon.com/"},
+      {shop:"MediaMarkt",price:919,url:"https://www.mediamarkt.com/"}
+    ],
+    history:[1099,1050,1020,999,959,919]
   },
   {
-    id:3, name:"Wireless Headphones",
+    id:3,
+    name:"Wireless Headphones",
     category:"Electronics",
     description:"Over-ear wireless headphones",
     image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
     prices:[
-      {shop:"Example Store A",price:89},
-      {shop:"Example Store B",price:75},
-      {shop:"Example Store C",price:69}
-    ]
+      {shop:"Sony",price:89,url:"https://www.sony.com/"},
+      {shop:"Amazon",price:75,url:"https://www.amazon.com/"},
+      {shop:"MediaMarkt",price:69,url:"https://www.mediamarkt.com/"}
+    ],
+    history:[99,95,89,85,79,69]
   },
   {
-    id:4, name:"Gaming Controller",
+    id:4,
+    name:"Gaming Controller",
     category:"Gaming",
     description:"Wireless gaming controller",
     image:"https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=600",
     prices:[
-      {shop:"Example Store A",price:69},
-      {shop:"Example Store B",price:59},
-      {shop:"Example Store C",price:49}
-    ]
+      {shop:"Xbox",price:69,url:"https://www.xbox.com/"},
+      {shop:"Amazon",price:59,url:"https://www.amazon.com/"},
+      {shop:"MediaMarkt",price:49,url:"https://www.mediamarkt.com/"}
+    ],
+    history:[79,75,69,65,59,49]
   },
   {
-    id:5, name:"Classic Watch",
+    id:5,
+    name:"Classic Watch",
     category:"Fashion",
     description:"Minimal everyday watch",
     image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600",
     prices:[
-      {shop:"Example Store A",price:110},
-      {shop:"Example Store B",price:95},
-      {shop:"Example Store C",price:79}
-    ]
+      {shop:"Watch Store A",price:110,url:"https://www.google.com/search?q=watches"},
+      {shop:"Amazon",price:95,url:"https://www.amazon.com/"},
+      {shop:"Watch Store B",price:79,url:"https://www.google.com/search?q=watches"}
+    ],
+    history:[125,120,110,99,89,79]
   },
   {
-    id:6, name:"Beauty Skincare",
+    id:6,
+    name:"Beauty Skincare",
     category:"Beauty",
     description:"Daily skincare essentials",
     image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600",
     prices:[
-      {shop:"Example Store A",price:35},
-      {shop:"Example Store B",price:29},
-      {shop:"Example Store C",price:25}
-    ]
+      {shop:"Beauty Store A",price:35,url:"https://www.google.com/search?q=skincare"},
+      {shop:"Amazon",price:29,url:"https://www.amazon.com/"},
+      {shop:"Beauty Store B",price:25,url:"https://www.google.com/search?q=skincare"}
+    ],
+    history:[40,38,35,32,29,25]
   }
 ];
 
-let favorites = JSON.parse(localStorage.getItem("pricelyFavorites") || "[]");
-let selectedCategory = "All";
-let showFavorites = false;
+function readStorage(key,fallback) {
+  try {
+    const value=JSON.parse(localStorage.getItem(key));
+    return value ?? fallback;
+  } catch(e) {
+    return fallback;
+  }
+}
 
-const grid = document.getElementById("productGrid");
-const searchInput = document.getElementById("searchInput");
+let favorites=readStorage("pricelyFavorites",[]);
+let alerts=readStorage("pricelyAlerts",[]);
+let profile=readStorage("pricelyProfile","");
+
+let selectedCategory="All";
+let showFavorites=false;
+
+const grid=document.getElementById("productGrid");
+const searchInput=document.getElementById("searchInput");
 
 function money(value) {
-  return "€" + value.toFixed(2);
+  return "€"+Number(value).toFixed(2);
+}
+
+function lowest(p) {
+  return Math.min(...p.prices.map(x=>x.price));
 }
 
 function render() {
-  const query = searchInput.value.toLowerCase().trim();
+  const query=searchInput.value.toLowerCase().trim();
 
-  let filtered = products.filter(p => {
-    const matchesSearch =
+  const filtered=products.filter(p=>{
+    const matchesSearch=
       p.name.toLowerCase().includes(query) ||
       p.category.toLowerCase().includes(query) ||
       p.description.toLowerCase().includes(query);
 
-    const matchesCategory =
-      selectedCategory === "All" ||
-      p.category === selectedCategory;
+    const matchesCategory=
+      selectedCategory==="All" || p.category===selectedCategory;
 
-    const matchesFavorite =
+    const matchesFavorite=
       !showFavorites || favorites.includes(p.id);
 
     return matchesSearch && matchesCategory && matchesFavorite;
   });
 
-  document.getElementById("heading").textContent =
+  document.getElementById("heading").textContent=
     showFavorites ? "Your saved products" :
-    selectedCategory === "All" ? "Discover products" : selectedCategory;
+    selectedCategory==="All" ? "Discover products" : selectedCategory;
 
-  document.getElementById("count").textContent =
-    filtered.length + " products";
+  document.getElementById("count").textContent=
+    filtered.length+" products";
 
-  if (!filtered.length) {
-    grid.innerHTML = '<div class="empty"><h3>No products found</h3><p>Try another search or category.</p></div>';
+  if(!filtered.length) {
+    grid.innerHTML='<div class="empty"><h3>No products found</h3><p>Try another search or category.</p></div>';
     return;
   }
 
-  grid.innerHTML = filtered.map(p => {
-    const sorted = [...p.prices].sort((a,b) => a.price-b.price);
-    const best = sorted[0];
+  grid.innerHTML=filtered.map(p=>{
+    const sorted=[...p.prices].sort((a,b)=>a.price-b.price);
+    const best=sorted[0];
 
     return `
       <article class="card">
         <div class="product-image">
           <img src="${p.image}" alt="${p.name}"
             onerror="this.style.display='none'">
-          <button class="heart ${favorites.includes(p.id) ? "saved" : ""}"
-            onclick="toggleFavorite(${p.id})"
-            aria-label="Save product">
-            ${favorites.includes(p.id) ? "♥" : "♡"}
+          <button class="heart ${favorites.includes(p.id)?"saved":""}"
+            onclick="toggleFavorite(${p.id})">
+            ${favorites.includes(p.id)?"♥":"♡"}
           </button>
         </div>
         <div class="card-body">
           <span class="tag">${p.category}</span>
           <h3>${p.name}</h3>
           <div class="description">${p.description}</div>
-          <div class="price-title">COMPARE SHOP PRICES</div>
-          ${sorted.map((item,index) => `
-            <div class="price-row ${index===0 ? "best" : ""}">
-              <span>${item.shop} ${index===0 ? "✓" : ""}</span>
+
+          <div class="price-title">COMPARE STORES</div>
+
+          ${sorted.map((item,index)=>`
+            <div class="price-row ${index===0?"best":""}">
+              <span>${item.shop} ${index===0?"✓":""}</span>
               <span>${money(item.price)}</span>
             </div>
           `).join("")}
+
           <div class="cheapest">
             <span>LOWEST SAMPLE PRICE</span>
             <span>${money(best.price)}</span>
           </div>
-          <div style="margin-top:12px;text-align:center">
-            <a href="https://www.google.com/search?tbm=shop&q=${encodeURIComponent(p.name + " " + best.shop)}"
-              target="_blank" rel="noopener noreferrer"
-              style="color:#159b70;font-weight:700;font-size:13px;text-decoration:none">
-              Find this product ↗
-            </a>
-          </div>
+
+          <button class="small-btn" onclick="openDetails(${p.id})">
+            View product details ↗
+          </button>
         </div>
       </article>
     `;
@@ -448,46 +633,151 @@ function render() {
 }
 
 function toggleFavorite(id) {
-  favorites = favorites.includes(id)
-    ? favorites.filter(x => x !== id)
+  favorites=favorites.includes(id)
+    ? favorites.filter(x=>x!==id)
     : [...favorites,id];
 
   localStorage.setItem("pricelyFavorites",JSON.stringify(favorites));
   render();
+  renderWishlist();
 }
 
-document.getElementById("searchButton").addEventListener("click",render);
-searchInput.addEventListener("input",render);
+function renderDeals() {
+  const deals=products
+    .map(p=>({
+      product:p,
+      saving:Math.round((p.history[0]-lowest(p))/p.history[0]*100)
+    }))
+    .sort((a,b)=>b.saving-a.saving);
 
-document.getElementById("categories").addEventListener("click",e => {
-  const button = e.target.closest("button[data-category]");
-  if (!button) return;
+  document.getElementById("dealGrid").innerHTML=deals.slice(0,3).map(d=>`
+    <div class="deal">
+      <strong>${d.product.name}</strong>
+      <p>Example price reduction: ${d.saving}%</p>
+      <strong>${money(lowest(d.product))}</strong>
+      <button onclick="openDetails(${d.product.id})">View product →</button>
+    </div>
+  `).join("");
+}
 
-  selectedCategory = button.dataset.category;
-  showFavorites = false;
+function renderWishlist() {
+  const saved=products.filter(p=>favorites.includes(p.id));
 
-  document.querySelectorAll(".category").forEach(b =>
-    b.classList.toggle("active",b === button)
-  );
+  document.getElementById("wishlistContent").innerHTML=
+    saved.length ? saved.map(p=>`
+      <div class="saved-item">
+        <span><strong>${p.name}</strong><br>
+        <small>${money(lowest(p))}</small></span>
+        <button class="danger" onclick="toggleFavorite(${p.id})">Remove</button>
+      </div>
+    `).join("") : "No saved products yet. Tap a heart to add one!";
+}
 
-  render();
-});
+function renderAlertOptions() {
+  document.getElementById("alertProduct").innerHTML=
+    products.map(p=>`
+      <option value="${p.id}">${p.name}</option>
+    `).join("");
+}
 
-document.getElementById("favoritesLink").addEventListener("click",e => {
-  e.preventDefault();
-  showFavorites = !showFavorites;
-  selectedCategory = "All";
+function renderAlerts() {
+  const container=document.getElementById("alertList");
 
-  document.querySelectorAll(".category").forEach(b =>
-    b.classList.toggle("active",b.dataset.category === "All")
-  );
+  if(!alerts.length) {
+    container.innerHTML='<p class="description">You have no price alerts yet.</p>';
+    return;
+  }
 
-  render();
-  document.getElementById("products").scrollIntoView({behavior:"smooth"});
-});
+  container.innerHTML=alerts.map(a=>{
+    const p=products.find(x=>x.id===a.productId);
+    if(!p) return "";
 
-render();
-</script>
-</body>
-  </html>
-  
+    const reached=lowest(p)<=a.target;
+
+    return `
+      <div class="alert-item">
+        <span>
+          <strong>${p.name}</strong><br>
+          <small>${money(a.target)} target · Current sample: ${money(lowest(p))}</small><br>
+          <small style="color:${reached?"#159b70":"#778397"}">
+            ${reached?"✓ Target reached!":"Waiting for target price"}
+          </small>
+        </span>
+        <button class="danger" onclick="removeAlert(${a.id})">Delete</button>
+      </div>
+    `;
+  }).join("");
+}
+
+function addAlert() {
+  const productId=Number(document.getElementById("alertProduct").value);
+  const target=Number(document.getElementById("targetPrice").value);
+
+  if(!target || target<=0) {
+    alert("Please enter a valid target price.");
+    return;
+  }
+
+  alerts.push({
+    id:Date.now(),
+    productId,
+    target
+  });
+
+  localStorage.setItem("pricelyAlerts",JSON.stringify(alerts));
+  document.getElementById("targetPrice").value="";
+  renderAlerts();
+}
+
+function removeAlert(id) {
+  alerts=alerts.filter(a=>a.id!==id);
+  localStorage.setItem("pricelyAlerts",JSON.stringify(alerts));
+  renderAlerts();
+}
+
+function openDetails(id) {
+  const p=products.find(x=>x.id===id);
+  if(!p) return;
+
+  const sorted=[...p.prices].sort((a,b)=>a.price-b.price);
+  const max=Math.max(...p.history);
+  const min=Math.min(...p.history);
+  const months=["May","Jun","Jul","Aug","Sep","Oct"];
+
+  const bars=p.history.map((price,index)=>{
+    const height=20+(price/max)*100;
+    return `
+      <div class="chart-column">
+        <span>${money(price)}</span>
+        <div class="chart-bar" style="height:${height}px"></div>
+        <span>${months[index]}</span>
+      </div>
+    `;
+  }).join("");
+
+  document.getElementById("modalContent").innerHTML=`
+    <button class="modal-close" onclick="closeDetails()">✕ Close</button>
+    <h2>${p.name}</h2>
+    <img src="${p.image}" alt="${p.name}"
+      style="width:100%;height:180px;object-fit:contain;background:#f1f4f7;border-radius:10px">
+    <p>${p.description}</p>
+    <div class="cheapest">
+      <span>LOWEST SAMPLE PRICE</span>
+      <span>${money(lowest(p))}</span>
+    </div>
+
+    <h3>Store comparison</h3>
+    ${sorted.map((item,index)=>`
+      <div class="price-row ${index===0?"best":""}">
+        <span>${item.shop}</span>
+        <span>
+          ${money(item.price)}
+          <br>
+          <a href="${item.url}" target="_blank" rel="noopener noreferrer"
+             style="font-size:11px">Visit store ↗</a>
+        </span>
+      </div>
+    `).join("")}
+
+    <h3>Price history</h3>
+    <p class="
